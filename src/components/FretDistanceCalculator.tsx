@@ -29,25 +29,6 @@ export class FretDistanceCalculator extends Component<IFretDistanceCalculatorPro
     };
   }
 
-  getFretDistances(numberOfFrets: number, scaleLength: number): FretDistance[] {        
-    let distanceFromNut = 0;    
-
-    return Array.from(Array(numberOfFrets).keys()).map((fretNumber) => {
-      const distanceFromPreviousFret = (scaleLength - distanceFromNut) / 17.817;
-      distanceFromNut += distanceFromPreviousFret; 
-      return {
-        id: fretNumber,
-        fretNumber,
-        distanceFromNut,
-        distanceFromPreviousFret
-      };
-    });
-  } 
-
-  setFretDistances(numberOfFrets: number, scaleLength: number): void {        
-    this.setState({fretDistances: this.getFretDistances(numberOfFrets, scaleLength)});
-  }
-
   setScaleLength(value: string): void {
     const scaleLength = parseFloat(value);    
     this.setState({scaleLength: isNaN(scaleLength) ? 0 : scaleLength});
@@ -58,6 +39,29 @@ export class FretDistanceCalculator extends Component<IFretDistanceCalculatorPro
     this.setState({numberOfFrets: isNaN(numberOfFrets) ? 0 : numberOfFrets});
   }
 
+  setFretDistances(numberOfFrets: number, scaleLength: number): void {        
+    this.setState({fretDistances: this.getFretDistances(numberOfFrets, scaleLength)});
+  }
+
+  private getFretDistances(numberOfFrets: number, scaleLength: number): FretDistance[] {        
+    let distanceFromNut = 0;    
+
+    return this.generateFretNumbers(numberOfFrets).map((fretNumber) => {
+      const distanceFromPreviousFret = (scaleLength - distanceFromNut) / 17.817;
+      distanceFromNut += distanceFromPreviousFret; 
+      return {
+        id: fretNumber,
+        fretNumber,
+        distanceFromNut,
+        distanceFromPreviousFret
+      };
+    });
+  }
+  
+  private generateFretNumbers(numberOfFrets: number): number[] {
+    return Array.from(Array(numberOfFrets).keys()).map(i => i + 1);
+  }
+  
   render() {
     return (
   	  <div id="fret-distance-calculator" className="fret-distance-container">
