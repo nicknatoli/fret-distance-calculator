@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import { FretDistanceTable } from './components/FretDistanceTable';
+import { FretDistanceCalculator } from './components/FretDistanceCalculator';
 
 function App() {
   return (
-    <div id="app">
-      <FretDistanceTable />
+    <div id="app" className="app">
+      <FretDistanceCalculator />
     </div>
   );
 }

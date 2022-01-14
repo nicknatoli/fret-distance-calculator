@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Box, Button, TextField } from '@mui/material';
+
+import './FretDistanceCalculator.css';
 import { FretDistance } from '../models/FretDistance';
 
-interface IFretDistanceTableProps {}
+interface IFretDistanceCalculatorProps {}
 
-interface IFretDistanceTableState {
+interface IFretDistanceCalculatorState {
   scaleLength: number,
   numberOfFrets: number,
   fretDistances: FretDistance[]
 }
 
-export class FretDistanceTable extends Component<IFretDistanceTableProps, IFretDistanceTableState> {  
+export class FretDistanceCalculator extends Component<IFretDistanceCalculatorProps, IFretDistanceCalculatorState> {  
   columns: GridColDef[] = [
     { field: 'fretNumber', headerName: 'Fret Number', width: 150 },
     { field: 'distanceFromNut', headerName: 'Distance From Nut', width: 300 },
     { field: 'distanceFromPreviousFret', headerName: 'Distance From Previous Fret', width: 300 }
   ];  
   
-  constructor(props: IFretDistanceTableProps) {
+  constructor(props: IFretDistanceCalculatorProps) {
     super(props);
     this.state = {
       scaleLength: 25.5,
@@ -58,8 +60,8 @@ export class FretDistanceTable extends Component<IFretDistanceTableProps, IFretD
 
   render() {
     return (
-  	  <div id="fret-distance-calculator" style={{height: 1000, width: '100%'}}>
-        <div id="fret-distance-form">
+  	  <div id="fret-distance-calculator" className="fret-distance-container">
+        <div id="fret-distance-form" className="fret-distance-container">
   	      <h1>Fret Distance Calculator</h1>
   	      <Box
   	        component="form"
@@ -74,7 +76,7 @@ export class FretDistanceTable extends Component<IFretDistanceTableProps, IFretD
 				  	<Button variant="contained" onClick={() => this.setFretDistances(this.state.numberOfFrets, this.state.scaleLength)}>Calculate</Button>
   	      </Box>
   	    </div>
-        <div id="fret-distance-table">
+        <div id="fret-distance-table" className="fret-distance-container">
           <h2>Fret Distances</h2>
             <DataGrid
               rows={this.state.fretDistances}

@@ -1,6 +1,10 @@
-.app {
+.fret-distance-container {
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+#fret-distance-table {
+  height: 1000px;
 }
