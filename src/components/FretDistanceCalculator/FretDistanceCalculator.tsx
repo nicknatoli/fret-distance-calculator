@@ -86,7 +86,7 @@ export class FretDistanceCalculator extends Component<IFretDistanceCalculatorPro
               rows={this.state.fretDistances}
               columns={this.columns}
               pageSize={24}
-          />
+            />
         </div>
   	  </div>
     );
