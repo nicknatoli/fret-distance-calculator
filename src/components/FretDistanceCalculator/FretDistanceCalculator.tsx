@@ -16,8 +16,8 @@ interface IFretDistanceCalculatorState {
 export class FretDistanceCalculator extends Component<IFretDistanceCalculatorProps, IFretDistanceCalculatorState> {  
   columns: GridColDef[] = [
     { field: 'fretNumber', headerName: 'Fret Number', width: 150 },
-    { field: 'distanceFromNut', headerName: 'Distance From Nut', width: 300 },
-    { field: 'distanceFromPreviousFret', headerName: 'Distance From Previous Fret', width: 300 }
+    { field: 'distanceFromNut', headerName: 'Distance From Nut (mm)', width: 300 },
+    { field: 'distanceFromPreviousFret', headerName: 'Distance From Previous Fret (mm)', width: 300 }
   ];  
   
   constructor(props: IFretDistanceCalculatorProps) {
@@ -86,8 +86,6 @@ export class FretDistanceCalculator extends Component<IFretDistanceCalculatorPro
               rows={this.state.fretDistances}
               columns={this.columns}
               pageSize={24}
-              rowsPerPageOptions={[5]}
-              checkboxSelection
           />
         </div>
   	  </div>
