@@ -3,7 +3,7 @@ import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Box, Button, TextField } from '@mui/material';
 
 import './FretDistanceCalculator.css';
-import { FretDistance } from '../models/FretDistance';
+import { FretDistance } from '../../models/FretDistance';
 
 interface IFretDistanceCalculatorProps {}
 
